@@ -1,16 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3player001"]
+[gd_scene load_steps=4 format=3 uid="uid://c3player001"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_player"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_arena"]
 size = Vector2(32, 32)
 
+[sub_resource type="RectangleShape2D" id="MeleeShape"]
+size = Vector2(72, 72)
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 1
-collision_mask = 2
+collision_mask = 6
+groups = ["player"]
 script = ExtResource("1_player")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_arena")
 
-[node name="Visual" type="Node2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 0)
+
+[node name="MeleeHitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeHitbox"]
+position = Vector2(0, 0)
+shape = SubResource("MeleeShape")
