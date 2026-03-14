@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3main001"]
+
+[ext_resource type="PackedScene" uid="uid://c3arena001" path="res://scenes/arena/arena.tscn" id="1_arena"]
+[ext_resource type="PackedScene" uid="uid://c3player001" path="res://scenes/player/player.tscn" id="2_player"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Arena" type="Node2D" parent="." instance=ExtResource("1_arena")]
+
+[node name="Player" type="CharacterBody2D" parent="." instance=ExtResource("2_player")]
+position = Vector2(600, 300)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position_smoothing_enabled = true
+position_smoothing_speed = 12.0
